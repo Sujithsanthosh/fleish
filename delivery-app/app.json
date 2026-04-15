@@ -1,0 +1,57 @@
+{
+  "expo": {
+    "name": "Fleish Delivery",
+    "slug": "delivery-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": false,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "scheme": "fleish-delivery",
+    "experiments": {
+      "typedRoutes": true
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.fleish.delivery",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "We need your location to track deliveries and navigate to customers.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "We need your location to track deliveries in the background.",
+        "NSCameraUsageDescription": "We need camera access to take delivery proof photos.",
+        "NSPhotoLibraryUsageDescription": "We need photo library access to attach delivery proof photos."
+      }
+    },
+    "android": {
+      "package": "com.fleish.delivery",
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION",
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "android.permission.ACCESS_BACKGROUND_LOCATION"
+      ],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "versionCode": 1
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fafde461-861b-41b0-9cae-5f826891f3d6"
+      }
+    },
+    "owner": "sujith13"
+  }
+}

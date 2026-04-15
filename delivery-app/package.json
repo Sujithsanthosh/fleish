@@ -1,0 +1,38 @@
+{
+  "name": "delivery-app",
+  "version": "1.0.0",
+  "main": "expo-router/entry",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@expo-google-fonts/inter": "^0.4.2",
+    "@react-native-async-storage/async-storage": "1.23.1",
+    "@supabase/supabase-js": "^2.103.0",
+    "expo": "~52.0.0",
+    "expo-av": "~15.0.0",
+    "expo-constants": "~17.0.0",
+    "expo-font": "~13.0.4",
+    "expo-image-picker": "~16.0.6",
+    "expo-linking": "~7.0.0",
+    "expo-location": "~18.0.0",
+    "expo-modules-autolinking": "~2.0.0",
+    "expo-modules-core": "~2.2.3",
+    "expo-router": "~4.0.0",
+    "expo-splash-screen": "^0.29.24",
+    "expo-status-bar": "~3.0.9",
+    "lucide-react-native": "^1.7.0",
+    "react": "^18.3.1",
+    "react-native": "^0.76.0",
+    "react-native-gesture-handler": "^2.31.0",
+    "react-native-reanimated": "^3.16.1",
+    "react-native-safe-area-context": "^5.7.0",
+    "react-native-screens": "^4.24.0",
+    "socket.io-client": "^4.8.3",
+    "zustand": "^5.0.12"
+  },
+  "private": true
+}
