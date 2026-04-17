@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+:root {
+  /* Leather Green Color Palette */
+  --background: #f5f3ef;
+  --foreground: #1c2f23;
+  
+  /* Primary Leather Green Shades */
+  --leather-900: #0f1f16;
+  --leather-800: #1a3c28;
+  --leather-700: #234836;
+  --leather-600: #2d5a42;
+  --leather-500: #3d7a58;
+  --leather-400: #4a9a6e;
+  --leather-300: #6bb88a;
+  --leather-200: #9dd4b3;
+  --leather-100: #c9ebd6;
+  --leather-50: #e8f5ed;
+  
+  /* Warm Brown Accents */
+  --brown-900: #3d2914;
+  --brown-700: #5c3d1f;
+  --brown-500: #8b6914;
+  --brown-400: #a67c52;
+  --brown-300: #c49a6c;
+  --brown-200: #dbc4a4;
+  --brown-100: #f0e6d3;
+  --brown-50: #faf6f0;
+  
+  /* Cream & Paper */
+  --cream: #f5f3ef;
+  --parchment: #faf9f6;
+  --sage-light: #e8f0e8;
+  
+  /* Semantic Colors */
+  --success: #2d6a4f;
+  --warning: #b8860b;
+  --error: #9b2335;
+  --info: #2c5282;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--leather-600);
+  --color-leather-900: var(--leather-900);
+  --color-leather-800: var(--leather-800);
+  --color-leather-700: var(--leather-700);
+  --color-leather-600: var(--leather-600);
+  --color-leather-500: var(--leather-500);
+  --color-leather-400: var(--leather-400);
+  --color-leather-300: var(--leather-300);
+  --color-leather-200: var(--leather-200);
+  --color-leather-100: var(--leather-100);
+  --color-leather-50: var(--leather-50);
+  --color-cream: var(--cream);
+  --color-parchment: var(--parchment);
+  --color-brown-500: var(--brown-500);
+  --color-brown-400: var(--brown-400);
+  --color-brown-300: var(--brown-300);
+  --color-brown-200: var(--brown-200);
+  --animate-fade-in: fadeIn 0.3s ease-in-out;
+  --animate-slide-in-right: slideInRight 0.3s ease-out;
+  --animate-zoom-in-95: zoomIn95 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn95 {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(45, 90, 66, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(45, 90, 66, 0.5); }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), 'Inter', system-ui, sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--leather-50);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--leather-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--leather-400);
+}
+
+/* Selection */
+::selection {
+  background: var(--leather-200);
+  color: var(--leather-900);
+}

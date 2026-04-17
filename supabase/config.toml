@@ -1,0 +1,20 @@
+# A string used to distinguish different Supabase projects on the same host.
+project_id = "fleish-fresh"
+
+[api]
+# Port to use for the local API server.
+port = 54321
+# Pin postgres version to match Supabase cloud.
+image = "postgis/postgis:15-3.4"
+
+[db]
+# Port to use for the local database.
+port = 54322
+
+[studio]
+# Port to use for the local studio UI.
+port = 54323
+
+[inbucket]
+# Port to use for the email testing server.
+port = 54324
