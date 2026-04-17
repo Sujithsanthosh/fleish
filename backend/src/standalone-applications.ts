@@ -57,6 +57,34 @@ class ApplicationsService {
   }
 }
 
+// Health Controller
+@Controller()
+class HealthController {
+  @Get()
+  getRoot() {
+    return {
+      status: 'healthy',
+      service: 'Fleish Applications API',
+      version: '1.0.0',
+      timestamp: new Date().toISOString(),
+      endpoints: [
+        '/api/applications',
+        '/api/applications/stats',
+        '/health'
+      ]
+    };
+  }
+
+  @Get('health')
+  getHealth() {
+    return {
+      status: 'healthy',
+      timestamp: new Date().toISOString(),
+      uptime: process.uptime()
+    };
+  }
+}
+
 // Applications Controller
 @Controller('api/applications')
 class ApplicationsController {
@@ -85,7 +113,7 @@ class ApplicationsController {
 // Minimal Module
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true })],
-  controllers: [ApplicationsController],
+  controllers: [HealthController, ApplicationsController],
 })
 class StandaloneApplicationsModule {}
 
