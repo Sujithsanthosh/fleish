@@ -11,23 +11,23 @@ services:
       - key: PORT
         value: 3000
       - key: DB_HOST
-        sync: false
+        value: db.vkayqfckbyazgzuaunsm.supabase.co
       - key: DB_PORT
         value: 5432
       - key: DB_USER
-        sync: false
+        value: postgres
       - key: DB_PASS
-        sync: false
+        value: Live#1995@avc
       - key: DB_NAME
         value: postgres
       - key: DB_SSL
         value: true
       - key: SUPABASE_URL
-        sync: false
+        value: https://vkayqfckbyazgzuaunsm.supabase.co
       - key: SUPABASE_SERVICE_ROLE_KEY
-        sync: false
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZrYXlxZmNrYnlhemd6dWF1bnNtIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NTc1MDM4NiwiZXhwIjoyMDkxMzI2Mzg2fQ.8lWGQ_MjbkV6IFHOv245aYVxfUjYPulbV-bBLOPq0Vc
       - key: JWT_SECRET
-        generateValue: true
+        value: fleish-production-jwt-secret-2026-secure-key
       - key: RAZORPAY_KEY_ID
         sync: false
       - key: RAZORPAY_KEY_SECRET
