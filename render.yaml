@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: fleish-backend
+    runtime: node
+    rootDir: backend
+    plan: starter
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: DB_HOST
+        value: aws-0-ap-south-1.pooler.supabase.com
+      - key: DB_PORT
+        value: 6543
+      - key: DB_USER
+        value: postgres.vkayqfckbyazgzuaunsm
+      - key: DB_PASS
+        value: Live#1995@avc
+      - key: DB_NAME
+        value: postgres
+      - key: DB_SSL
+        value: true
+      - key: DB_POOL_SIZE
+        value: 10
+      - key: SUPABASE_URL
+        value: https://vkayqfckbyazgzuaunsm.supabase.co
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZrYXlxZmNrYnlhemd6dWF1bnNtIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NTc1MDM4NiwiZXhwIjoyMDkxMzI2Mzg2fQ.8lWGQ_MjbkV6IFHOv245aYVxfUjYPulbV-bBLOPq0Vc
+      - key: JWT_SECRET
+        value: fleish-production-jwt-secret-2026-secure-key-change-this
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+    healthCheckPath: /health

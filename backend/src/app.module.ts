@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { BullModule } from '@nestjs/bullmq';
+// import { BullModule } from '@nestjs/bullmq';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { VendorsModule } from './modules/vendors/vendors.module';
@@ -66,17 +66,7 @@ import { UserSubscription } from './entities/user-subscription.entity';
         poolSize: config.get<number>('DB_POOL_SIZE', 10),
       }),
     }),
-    // BullModule disabled temporarily - Redis 5.0+ required
-    // BullModule.forRootAsync({
-    //   imports: [ConfigModule],
-    //   inject: [ConfigService],
-    //   useFactory: (config: ConfigService) => ({
-    //     connection: {
-    //       host: config.get<string>('REDIS_HOST', 'localhost'),
-    //       port: config.get<number>('REDIS_PORT', 6379),
-    //     },
-    //   }),
-    // }),
+    // BullModule/Redis disabled - not available in production environment
     AuthModule,
     UsersModule,
     VendorsModule,

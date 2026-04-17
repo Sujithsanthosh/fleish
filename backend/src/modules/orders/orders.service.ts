@@ -3,8 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Order, OrderStatus } from '../../entities/order.entity';
 import { VendorsService } from '../vendors/vendors.service';
-import { InjectQueue } from '@nestjs/bullmq';
-import { Queue } from 'bullmq';
+// import { InjectQueue } from '@nestjs/bullmq';
+// import { Queue } from 'bullmq';
 import { RealtimeGateway } from '../realtime/realtime.gateway';
 
 @Injectable()
@@ -14,7 +14,7 @@ export class OrdersService {
     private ordersRepository: Repository<Order>,
     private vendorsService: VendorsService,
     private realtimeGateway: RealtimeGateway,
-    @InjectQueue('order-assignment') private assignmentQueue: Queue,
+    // @InjectQueue('order-assignment') private assignmentQueue: Queue,
   ) { }
 
   async create(orderData: any, userId: string): Promise<Order> {
@@ -63,8 +63,8 @@ export class OrdersService {
     // Notify Vendor via WebSockets
     this.realtimeGateway.notifyVendor(bestVendor.id, 'order_update', { orderId, type: 'new_order' });
 
-    // Add to queue for timeout (e.g., 30 seconds to accept)
-    await this.assignmentQueue.add('check-acceptance', { orderId, vendorId: bestVendor.id }, { delay: 30000 });
+    // Queue disabled - Redis not available in production
+    // await this.assignmentQueue.add('check-acceptance', { orderId, vendorId: bestVendor.id }, { delay: 30000 });
   }
 
   async updateStatus(orderId: string, status: OrderStatus, user?: any) {
