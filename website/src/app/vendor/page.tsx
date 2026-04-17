@@ -187,6 +187,7 @@ export default function VendorOnboarding() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [form, setForm] = useState({ shopName: '', ownerName: '', location: '', phone: '', email: '', category: 'chicken', fssai: '' });
   const [uploading, setUploading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

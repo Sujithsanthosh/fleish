@@ -39,32 +39,43 @@ import { UserSubscription } from './entities/user-subscription.entity';
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: (config: ConfigService) => ({
-        type: 'postgres',
-        host: config.get<string>('DB_HOST', 'localhost'),
-        port: config.get<number>('DB_PORT', 5432),
-        username: config.get<string>('DB_USER', 'postgres'),
-        password: config.get<string>('DB_PASS', 'postgres'),
-        database: config.get<string>('DB_NAME', 'fleish'),
-        entities: [
-          User, Vendor, Product, Order, Delivery, Payment,
-          SupportTicket, Settlement, JobApplication,
-          SubscriptionPlan, UserSubscription,
-        ],
-        synchronize: true,
-        ssl: { rejectUnauthorized: false },
-        extra: {
-          ssl: {
-            rejectUnauthorized: false,
+      useFactory: (config: ConfigService) => {
+        const databaseUrl = config.get<string>('DATABASE_URL');
+        const sslEnabled = config.get<string>('DB_SSL', 'true') !== 'false';
+        const sslConfig = sslEnabled ? { rejectUnauthorized: false } : false;
+
+        return {
+          type: 'postgres',
+          ...(databaseUrl
+            ? { url: databaseUrl }
+            : {
+                host: config.get<string>('DB_HOST', 'localhost'),
+                port: config.get<number>('DB_PORT', 5432),
+                username: config.get<string>('DB_USER', 'postgres'),
+                password: config.get<string>('DB_PASS', 'postgres'),
+                database: config.get<string>('DB_NAME', 'fleish'),
+              }),
+          entities: [
+            User, Vendor, Product, Order, Delivery, Payment,
+            SupportTicket, Settlement, JobApplication,
+            SubscriptionPlan, UserSubscription,
+          ],
+          synchronize: true,
+          ssl: sslConfig,
+          extra: {
+            // Render often resolves DB hosts to IPv6 first; pg `family: 4`
+            // keeps connections on IPv4 when the container lacks IPv6 egress.
+            family: 4,
+            ssl: sslConfig,
           },
-        },
-        retryAttempts: 10,
-        retryDelay: 5000,
-        connectTimeoutMS: 60000,
-        logNotifications: true,
-        logging: ['error', 'warn'],
-        poolSize: config.get<number>('DB_POOL_SIZE', 10),
-      }),
+          retryAttempts: 10,
+          retryDelay: 5000,
+          connectTimeoutMS: 60000,
+          logNotifications: true,
+          logging: ['error', 'warn'],
+          poolSize: config.get<number>('DB_POOL_SIZE', 10),
+        };
+      },
     }),
     // BullModule/Redis disabled - not available in production environment
     AuthModule,
